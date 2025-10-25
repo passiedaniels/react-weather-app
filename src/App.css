@@ -1,0 +1,49 @@
+.App {
+  font-family: Google Sans, Arial, sans-serif;
+  font-weight: 400px;
+}
+
+.weather {
+  border: 1px solid grey;
+  margin: 20px;
+}
+h1 {
+  margin-left: 20px;
+
+  font-size: 40px;
+}
+li {
+  list-style: none;
+}
+form {
+  margin: 20px auto;
+  text-align: center;
+}
+img {
+  margin-left: 30px;
+  width: 60px;
+  height: 60px;
+  aspect-ratio: 1/1;
+}
+.degree {
+  font-size: 48px;
+  vertical-align: -7px;
+}
+.details {
+  font-size: 12px;
+}
+.details-1 {
+  font-size: 22px;
+}
+.searchButton {
+  width: 400px;
+  margin-right: 5px;
+}
+.submitButton {
+  width: 80px;
+  background: cyan;
+}
+.submitButton:hover {
+  background: white;
+  cursor: pointer;
+}
