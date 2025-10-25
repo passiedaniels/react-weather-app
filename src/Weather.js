@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 export default function Weather() {
   return (
     <div className="App">
-      <div className="container">
+      <div className="container ">
         <div className="weather">
           <form>
             <input
@@ -16,7 +16,9 @@ export default function Weather() {
             />
             <input type="submit" value="search" className="submitButton" />
           </form>
-          <h1>New York</h1>
+          <div className="mb-20">
+            <h1>New York</h1>
+          </div>
 
           <div className="row">
             <div className="col-md-6">

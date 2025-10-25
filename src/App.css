@@ -1,11 +1,16 @@
 .App {
   font-family: Google Sans, Arial, sans-serif;
   font-weight: 400px;
+  background: linear-gradient(to right, #fff9f5 0%, #fff9f5 100%);
 }
 
 .weather {
   border: 1px solid grey;
   margin: 20px;
+  padding: 20px;
+
+  background: #5e7dcd;
+  background: linear-gradient(270deg, #5e7dcd, #02b9d4);
 }
 h1 {
   margin-left: 20px;
@@ -17,6 +22,7 @@ li {
 }
 form {
   margin: 20px auto;
+  margin-bottom: 20px;
   text-align: center;
 }
 img {
@@ -36,12 +42,14 @@ img {
   font-size: 22px;
 }
 .searchButton {
-  width: 400px;
+  width: 500px;
+  height: 35px;
   margin-right: 5px;
 }
 .submitButton {
   width: 80px;
-  background: cyan;
+  height: 35px;
+  background: violet;
 }
 .submitButton:hover {
   background: white;
