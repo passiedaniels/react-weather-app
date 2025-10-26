@@ -1,84 +1,105 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
 
 export default function Weather() {
-  return (
-    <div className="App">
-      <div className="container ">
-        <div className="weather">
-          <form>
-            <input
-              type="search"
-              placeholder="Enter city..."
-              required
-              autoFocus="on"
-              className="searchButton"
-            />
-            <input type="submit" value="search" className="submitButton" />
-          </form>
-          <div className="mb-20">
-            <h1>New York</h1>
-          </div>
+  let [weatherData, setWeatherData] = useState({ ready: false });
 
-          <div className="row">
-            <div className="col-md-6">
-              <div className="row">
-                <div className="col-7">
-                  <img
-                    src="https://www.gstatic.com/weather/conditions/v1/svg/cloudy_light.svg"
-                    alt="Cloudy"
-                  />
-                  <span className="degree">17°C</span>
-                </div>
-                <div className="col-5">
-                  <ul className="details">
-                    <li>Precipitation: 21%</li>
-                    <li>Humidity: 92%</li>
-                    <li>Wind: 11 km/h</li>
-                  </ul>
+  function displayInfo(response) {
+    console.log(response.data);
+    setWeatherData({
+      ready: true,
+      city: response.data.city,
+      temperature: response.data.temperature.current,
+      humidity: response.data.temperature.humidity,
+      wind: response.data.wind.speed,
+      description: response.data.condition.description,
+      icon: "https://www.gstatic.com/weather/conditions/v1/svg/cloudy_light.svg",
+    });
+  }
+
+  if (weatherData.ready) {
+    return (
+      <div className="App">
+        <div className="container ">
+          <div className="weather">
+            <form>
+              <input
+                type="search"
+                placeholder="Enter city..."
+                required
+                autoFocus="on"
+                className="searchButton"
+              />
+              <input type="submit" value="search" className="submitButton" />
+            </form>
+
+            <h1>{weatherData.city}</h1>
+
+            <div className="row">
+              <div className="col-md-6">
+                <div className="row">
+                  <div className="col-7">
+                    <img src={weatherData.icon} alt="Cloudy" />
+                    <span className="degree">
+                      {Math.round(weatherData.temperature)}°C
+                    </span>
+                  </div>
+                  <div className="col-5">
+                    <ul className="details">
+                      <li>Humidity: {Math.round(weatherData.humidity)}%</li>
+                      <li>Wind: {Math.round(weatherData.wind)}km/h</li>
+                    </ul>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="col-md-6">
-              <ul className="details-1">
-                <li>
-                  <strong>Weather</strong>
-                </li>
-                <li>Saturday 21:00</li>
-                <li>Cloudy</li>
-              </ul>
+              <div className="col-md-6">
+                <ul className="details-1">
+                  <li>
+                    <strong>Weather</strong>
+                  </li>
+                  <li>Saturday 21:00</li>
+                  <li className="text-capitalize">{weatherData.description}</li>
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
 
-        <footer>
-          This project was coded by{" "}
-          <a
-            href="https://github.com/passiedaniels"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Pascalia A.
-          </a>
-          , open sourced on{" "}
-          <a
-            href="https://github.com/passiedaniels/react-weather-app"
-            target="_blank"
-            rel="noreferrer"
-          >
-            github
-          </a>{" "}
-          and hosted on{" "}
-          <a
-            href="https://myreactweathe.netlify.app/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Netlify
-          </a>
-        </footer>
+          <footer>
+            This project was coded by{" "}
+            <a
+              href="https://github.com/passiedaniels"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Pascalia A.
+            </a>
+            , open sourced on{" "}
+            <a
+              href="https://github.com/passiedaniels/react-weather-app"
+              target="_blank"
+              rel="noreferrer"
+            >
+              github
+            </a>{" "}
+            and hosted on{" "}
+            <a
+              href="https://myreactweathe.netlify.app/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Netlify
+            </a>
+          </footer>
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    let key = "943a3ddbo20b374aff624c0t29d891a1";
+    let city = "Paris";
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${key}`;
+    axios.get(apiUrl).then(displayInfo);
+    return "Loading...";
+  }
 }
