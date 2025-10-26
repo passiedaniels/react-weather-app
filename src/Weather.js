@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { ColorRing } from "react-loader-spinner";
 import axios from "axios";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
 
-export default function Weather() {
+export default function Weather(props) {
   let [weatherData, setWeatherData] = useState({ ready: false });
 
   function displayInfo(response) {
@@ -97,9 +98,19 @@ export default function Weather() {
     );
   } else {
     let key = "943a3ddbo20b374aff624c0t29d891a1";
-    let city = "Paris";
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${key}`;
+
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${props.defaultCity}&key=${key}`;
     axios.get(apiUrl).then(displayInfo);
-    return "Loading...";
+    return (
+      <ColorRing
+        visible={true}
+        height="200"
+        width="200"
+        ariaLabel="color-ring-loading"
+        wrapperStyle={{}}
+        wrapperClass="color-ring-wrapper"
+        colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
+      />
+    );
   }
 }
