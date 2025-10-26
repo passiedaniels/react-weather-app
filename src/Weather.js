@@ -12,6 +12,7 @@ export default function Weather() {
               type="search"
               placeholder="Enter city..."
               required
+              autoFocus="on"
               className="searchButton"
             />
             <input type="submit" value="search" className="submitButton" />
@@ -23,7 +24,7 @@ export default function Weather() {
           <div className="row">
             <div className="col-md-6">
               <div className="row">
-                <div className="col-6">
+                <div className="col-7">
                   <img
                     src="https://www.gstatic.com/weather/conditions/v1/svg/cloudy_light.svg"
                     alt="Cloudy"

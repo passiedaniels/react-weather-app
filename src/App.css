@@ -6,9 +6,10 @@
 
 .weather {
   border: 1px solid grey;
-  margin: 20px;
-  padding: 20px;
+  width: 800px;
 
+  margin: 20px;
+  padding: 40px;
   background: #5e7dcd;
   background: linear-gradient(270deg, #5e7dcd, #02b9d4);
 }
@@ -32,7 +33,7 @@ img {
   aspect-ratio: 1/1;
 }
 .degree {
-  font-size: 48px;
+  font-size: 45px;
   vertical-align: -7px;
 }
 .details {
@@ -54,4 +55,9 @@ img {
 .submitButton:hover {
   background: white;
   cursor: pointer;
+}
+footer {
+  max-width: 800px;
+  font-size: 12px;
+  text-align: center;
 }
