@@ -9,8 +9,9 @@
 
   margin: 20px;
   padding: 40px;
-  background: #5e7dcd;
-  background: linear-gradient(270deg, #5e7dcd, #02b9d4);
+
+  background: #cac4ac;
+  background: linear-gradient(135deg, #cac4ac, #31515d);
 }
 h1 {
   margin-left: 20px;
