@@ -33,8 +33,12 @@ img {
   aspect-ratio: 1/1;
 }
 .degree {
-  font-size: 45px;
+  font-size: 40px;
   vertical-align: -7px;
+}
+.degree-2 {
+  font-size: 15px;
+  vertical-align: 12px;
 }
 .details {
   font-size: 17px;

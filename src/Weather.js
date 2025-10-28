@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-
 import { ColorRing } from "react-loader-spinner";
 import axios from "axios";
-import FormattedDate from "./FormattedDate";
+import WeatherInfo from "./WeatherInfo";
+
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
 
 export default function Weather(props) {
+  let [city, setCity] = useState(props.defaultCity);
   let [weatherData, setWeatherData] = useState({ ready: false });
 
   function displayInfo(response) {
@@ -18,9 +19,25 @@ export default function Weather(props) {
       humidity: response.data.temperature.humidity,
       wind: response.data.wind.speed,
       description: response.data.condition.description,
-      icon: "https://www.gstatic.com/weather/conditions/v1/svg/cloudy_light.svg",
+      icon: response.data.condition.icon_url,
       date: new Date(response.data.time * 1000),
     });
+  }
+
+  function search() {
+    let key = "943a3ddbo20b374aff624c0t29d891a1";
+
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${key}`;
+    axios.get(apiUrl).then(displayInfo);
+  }
+
+  function handleCity(event) {
+    setCity(event.target.value);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
   }
 
   if (weatherData.ready) {
@@ -28,81 +45,24 @@ export default function Weather(props) {
       <div className="App">
         <div className="container ">
           <div className="weather">
-            <form>
+            <form onSubmit={handleSubmit}>
               <input
                 type="search"
                 placeholder="Enter city..."
                 required
                 autoFocus="on"
                 className="searchButton"
+                onChange={handleCity}
               />
               <input type="submit" value="search" className="submitButton" />
             </form>
-
-            <h1>{weatherData.city}</h1>
-            <ul className="details-1">
-              <h2>
-                {" "}
-                <strong>Weather</strong>
-              </h2>
-
-              <li>
-                <FormattedDate date={weatherData.date} />
-              </li>
-              <li className="text-capitalize">{weatherData.description}</li>
-            </ul>
-
-            <div className="row">
-              <div className="col-6">
-                <img src={weatherData.icon} alt="Cloudy" />
-                <span className="degree">
-                  {Math.round(weatherData.temperature)}°C
-                </span>
-              </div>
-
-              <div className="col-6">
-                <ul className="details">
-                  <li>Humidity: {Math.round(weatherData.humidity)}%</li>
-                  <li>Wind: {Math.round(weatherData.wind)}km/h</li>
-                </ul>
-              </div>
-            </div>
+            <WeatherInfo info={weatherData} />
           </div>
-
-          <footer>
-            This project was coded by{" "}
-            <a
-              href="https://github.com/passiedaniels"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Pascalia A.
-            </a>
-            , open sourced on{" "}
-            <a
-              href="https://github.com/passiedaniels/react-weather-app"
-              target="_blank"
-              rel="noreferrer"
-            >
-              github
-            </a>{" "}
-            and hosted on{" "}
-            <a
-              href="https://myreactweathe.netlify.app/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Netlify
-            </a>
-          </footer>
         </div>
       </div>
     );
   } else {
-    let key = "943a3ddbo20b374aff624c0t29d891a1";
-
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${props.defaultCity}&key=${key}`;
-    axios.get(apiUrl).then(displayInfo);
+    search();
     return (
       <ColorRing
         visible={true}
