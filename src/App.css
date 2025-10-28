@@ -40,9 +40,13 @@ img {
   font-size: 15px;
   vertical-align: 12px;
 }
+.degree a {
+  text-decoration: none;
+}
 .details {
   font-size: 17px;
 }
+
 .details-1 {
   font-size: 15px;
 }
