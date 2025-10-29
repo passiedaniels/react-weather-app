@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ColorRing } from "react-loader-spinner";
 import axios from "axios";
 import WeatherInfo from "./WeatherInfo";
+import WeatherForecast from "./WeatherForecast";
 
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
@@ -14,6 +15,8 @@ export default function Weather(props) {
     console.log(response.data);
     setWeatherData({
       ready: true,
+      coordinates: response.data.coordinates,
+
       city: response.data.city,
       temperature: response.data.temperature.current,
       humidity: response.data.temperature.humidity,
@@ -57,6 +60,7 @@ export default function Weather(props) {
               <input type="submit" value="search" className="submitButton" />
             </form>
             <WeatherInfo info={weatherData} />
+            <WeatherForecast forecast={weatherData} />
           </div>
         </div>
       </div>

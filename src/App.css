@@ -13,6 +13,7 @@
   background: #cac4ac;
   background: linear-gradient(135deg, #cac4ac, #31515d);
 }
+
 h1 {
   margin-left: 20px;
 
@@ -69,6 +70,19 @@ footer {
   max-width: 800px;
   font-size: 12px;
   text-align: center;
+}
+.weatherForecast-Data {
+  text-align: center;
+}
+.weatherForecast-icon img {
+  margin-right: 20px;
+}
+.weatherForecast-Temperatures {
+  margin-left: 10px;
+}
+.weatherForecast-Temperature-min {
+  margin-left: 3px;
+  opacity: 0.7;
 }
 @media (max-width: 800px) {
   .weather {
