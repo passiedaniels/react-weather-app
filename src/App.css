@@ -54,12 +54,12 @@ img {
   font-size: 15px;
 }
 .searchButton {
-  width: 600px;
+  width: 550px;
   height: 35px;
   margin-right: 5px;
 }
 .submitButton {
-  width: 100px;
+  width: 80px;
   height: 35px;
   background: violet;
 }
