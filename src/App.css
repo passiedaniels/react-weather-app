@@ -16,7 +16,7 @@
 }
 
 h1 {
-  margin-left: 20px;
+  margin-left: 30px;
 
   font-size: 60px;
   font-weight: 300;
@@ -27,7 +27,7 @@ li {
 form {
   margin: 20px auto;
   margin-bottom: 20px;
-  text-align: center;
+  margin-left: 30px;
 }
 img {
   margin-left: 30px;
