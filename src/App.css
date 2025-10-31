@@ -53,12 +53,12 @@ img {
   font-size: 15px;
 }
 .searchButton {
-  width: 500px;
+  width: 600px;
   height: 35px;
   margin-right: 5px;
 }
 .submitButton {
-  width: 80px;
+  width: 100px;
   height: 35px;
   background: violet;
 }
@@ -73,6 +73,7 @@ footer {
 }
 .weatherForecast-Data {
   text-align: center;
+  margin-top: 10x;
 }
 .weatherForecast-icon img {
   margin-right: 20px;
@@ -86,12 +87,12 @@ footer {
 }
 @media (max-width: 800px) {
   .weather {
-    max-width: 500px;
+    max-width: 550px;
     padding: 0;
     margin: 0;
   }
   .searchButton {
-    width: 300px;
+    width: 350px;
     height: 35px;
   }
   .submitButton {
